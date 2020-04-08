@@ -1,0 +1,1 @@
+// Contains info for off-map spawn sites
