@@ -2882,6 +2882,7 @@
 #include "code\modules\organs\subtypes\vox_vr.dm"
 #include "code\modules\organs\subtypes\xenos.dm"
 #include "code\modules\overmap\bluespace_rift_vr.dm"
+#include "code\modules\overmap\helpers.dm"
 #include "code\modules\overmap\overmap_object.dm"
 #include "code\modules\overmap\overmap_shuttle.dm"
 #include "code\modules\overmap\sectors.dm"
@@ -3531,5 +3532,6 @@
 #include "maps\submaps\surface_submaps\wilderness\wilderness.dm"
 #include "maps\submaps\surface_submaps\wilderness\wilderness_areas.dm"
 #include "maps\tether\tether.dm"
+#include "maps\tether\tether_jobs.dm"
 #include "maps\~map_system\maps.dm"
 // END_INCLUDE

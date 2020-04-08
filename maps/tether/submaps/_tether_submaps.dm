@@ -486,3 +486,7 @@
 #include "om_ships/cruiser.dm"
 #include "om_ships/vespa.dm"
 #include "om_ships/generic_shuttle.dm"
+
+//////////////////////////////////////////////////////////////////////////////
+//Offmap Spawn Locations
+#include "offmap/talon.dm"
