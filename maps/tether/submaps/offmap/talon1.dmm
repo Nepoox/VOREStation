@@ -1738,7 +1738,9 @@
 /area/talon/deckone/brig)
 "dI" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_security,
+/obj/machinery/door/airlock/glass_security{
+	req_one_access = list(301)
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/deckone/brig)
 "dJ" = (
@@ -1808,7 +1810,9 @@
 "dP" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/medical,
+/obj/machinery/door/airlock/glass_medical{
+	req_one_access = list(301)
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/deckone/medical)
 "dQ" = (
@@ -1982,6 +1986,7 @@
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
+/obj/machinery/chemical_dispenser/full,
 /turf/simulated/floor/tiled/white,
 /area/talon/deckone/medical)
 "ei" = (
@@ -1991,10 +1996,14 @@
 /area/talon/deckone/armory)
 "ej" = (
 /obj/structure/closet/crate/medical/blood,
+/obj/item/weapon/reagent_containers/blood/prelabeled/OMinus,
+/obj/item/weapon/reagent_containers/blood/prelabeled/OMinus,
 /turf/simulated/floor/tiled/white,
 /area/talon/deckone/medical)
 "ek" = (
-/obj/structure/closet/crate/medical,
+/obj/structure/closet/crate/medical{
+	name = "first-aid kits"
+	},
 /obj/item/weapon/storage/firstaid/toxin,
 /obj/item/weapon/storage/firstaid/toxin,
 /obj/item/weapon/storage/firstaid/o2,
@@ -2094,7 +2103,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_security,
+/obj/machinery/door/airlock/glass_security{
+	req_one_access = list(301)
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/deckone/brig)
 "eu" = (
@@ -2195,7 +2206,9 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/medical,
+/obj/machinery/door/airlock/glass_medical{
+	req_one_access = list(301)
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/deckone/medical)
 "eA" = (
@@ -2364,6 +2377,7 @@
 /obj/effect/floor_decal/borderfloorwhite/corner2{
 	dir = 8
 	},
+/obj/structure/medical_stand/anesthetic,
 /turf/simulated/floor/tiled/white,
 /area/talon/deckone/medical)
 "eP" = (
@@ -2509,6 +2523,7 @@
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/talon/deckone/medical)
 "fc" = (
@@ -2807,8 +2822,8 @@
 /turf/simulated/floor/reinforced/airless,
 /area/talon/maintenance/deckone_port)
 "fA" = (
-/obj/machinery/door/airlock/external,
 /obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
 "fB" = (
@@ -2833,8 +2848,8 @@
 	icon_state = "intact-aux";
 	dir = 4
 	},
-/obj/machinery/door/airlock/external,
 /obj/effect/map_helper/airlock/door/int_door,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
 "fD" = (
@@ -3007,8 +3022,8 @@
 	icon_state = "intact-aux";
 	dir = 4
 	},
-/obj/machinery/door/airlock/external,
 /obj/effect/map_helper/airlock/door/int_door,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_starboard)
 "fU" = (
@@ -3029,8 +3044,8 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_starboard)
 "fV" = (
-/obj/machinery/door/airlock/external,
 /obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_starboard)
 "fW" = (
@@ -3301,6 +3316,7 @@
 /area/talon/deckone/workroom)
 "gy" = (
 /obj/effect/floor_decal/borderfloor,
+/obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/tiled/steel,
 /area/talon/deckone/workroom)
 "gz" = (
@@ -3532,15 +3548,22 @@
 /turf/simulated/wall,
 /area/talon/deckone/starboard_eng_store)
 "gZ" = (
-/obj/machinery/vending/tool,
+/obj/machinery/vending/tool{
+	req_log_access = 301
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/deckone/port_eng_store)
 "ha" = (
-/obj/machinery/vending/engineering,
+/obj/machinery/vending/engineering{
+	req_log_access = 301
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/deckone/port_eng_store)
 "hb" = (
-/obj/machinery/vending/engivend,
+/obj/machinery/vending/engivend{
+	req_access = newlist();
+	req_log_access = 301
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/deckone/port_eng_store)
 "hc" = (
@@ -4760,10 +4783,6 @@
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/machinery/light/small{
-	dir = 8;
-	pixel_y = 0
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/talonboat)
 "jh" = (
@@ -5492,12 +5511,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/talon/deckone/armory)
 "kV" = (
-/obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner2{
 	dir = 5
+	},
+/obj/structure/closet/crate/medical{
+	name = "medicine cooler"
 	},
 /turf/simulated/floor/tiled/white,
 /area/talon/deckone/medical)
@@ -5611,9 +5632,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/talon/deckone/central_hallway)
 "ln" = (
-/obj/machinery/door/airlock/external,
 /obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/talonboat)
 "lo" = (
@@ -5646,17 +5667,17 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/talonboat)
 "ls" = (
-/obj/machinery/door/airlock/external,
 /obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/talonboat)
 "lt" = (
-/obj/machinery/door/airlock/external,
 /obj/effect/map_helper/airlock/door/simple,
 /obj/structure/cable/green{
 	icon_state = "4-8";
 	dir = 1
 	},
+/obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/talonboat)
 "lu" = (
@@ -5754,6 +5775,24 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/talon/deckone/bridge)
+"Sb" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/tiled/techfloor,
+/area/talon/deckone/starboard_eng_store)
+"WB" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8;
+	icon_state = "borderfloor";
+	pixel_x = 0
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10;
+	icon_state = "borderfloorcorner2";
+	pixel_x = 0
+	},
+/obj/machinery/suit_cycler,
+/turf/simulated/floor/tiled/steel,
+/area/talon/deckone/central_hallway)
 
 (1,1,1) = {"
 aa
@@ -14933,7 +14972,7 @@ hW
 ip
 lz
 kP
-lA
+WB
 dL
 dL
 lz
@@ -17057,7 +17096,7 @@ fJ
 aP
 gY
 hl
-hl
+hk
 gY
 ig
 ix
@@ -17199,7 +17238,7 @@ fJ
 aP
 gY
 hm
-hl
+Sb
 gY
 ih
 iy

@@ -891,8 +891,8 @@
 /area/beach)
 "co" = (
 /obj/effect/shuttle_landmark{
-	base_area = /area/centcom/ferry;
-	base_turf = /turf/simulated/floor/tiled/techfloor/grid;
+	base_area = null;
+	base_turf = null;
 	docking_controller = null;
 	landmark_tag = "escape_transit";
 	name = "Escape Transit"
@@ -1147,9 +1147,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
-"cX" = (
-/turf/unsimulated/seperator,
-/area/space)
 "cY" = (
 /obj/structure/shuttle/engine/propulsion{
 	icon_state = "burst_l"
@@ -2285,6 +2282,14 @@
 /obj/structure/flora/grass/both,
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/holodorm/source_snow)
+"gw" = (
+/turf/space,
+/turf/space/internal_edge/topleft,
+/area/space)
+"gC" = (
+/turf/space,
+/turf/space/internal_edge/topright,
+/area/space)
 "gN" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/holofloor/desert,
@@ -2314,10 +2319,12 @@
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/holodorm/source_garden)
-"hn" = (
-/obj/machinery/telecomms/relay/preset/centcom/tether/base_high,
-/turf/unsimulated/floor/steel,
-/area/centcom/control)
+"hp" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/space)
 "hx" = (
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/holodorm/source_seating)
@@ -2432,6 +2439,14 @@
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/holodorm/source_boxing)
+"jI" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1";
+	pixel_x = 0
+	},
+/turf/simulated/floor/tiled/steel,
+/area/centcom/simulated/main_hall)
 "kh" = (
 /obj/machinery/telecomms/relay/preset/centcom/tether/base_mid,
 /turf/unsimulated/floor/steel,
@@ -2440,14 +2455,24 @@
 /obj/machinery/telecomms/server/presets/centcomm,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
-"kF" = (
-/obj/machinery/telecomms/relay/preset/centcom/tether/midpoint,
-/turf/unsimulated/floor/steel,
-/area/centcom/control)
+"oo" = (
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel,
+/area/space)
 "pb" = (
 /obj/machinery/telecomms/processor/preset_cent,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"rl" = (
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel,
+/area/space)
 "rE" = (
 /obj/machinery/telecomms/bus/preset_cent,
 /turf/unsimulated/floor/steel,
@@ -2484,10 +2509,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/suppy)
-"vt" = (
-/obj/machinery/telecomms/relay/preset/centcom/tether/station_high,
-/turf/unsimulated/floor/steel,
-/area/centcom/control)
+"vU" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/space)
 "wd" = (
 /obj/structure/sign/warning/nosmoking_2,
 /turf/unsimulated/wall,
@@ -2504,6 +2531,13 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"xz" = (
+/turf/space,
+/turf/space/internal_edge/bottomleft,
+/area/space)
+"yf" = (
+/turf/space/internal_edge/right,
+/area/space)
 "yA" = (
 /obj/machinery/telecomms/receiver/preset_cent,
 /turf/unsimulated/floor/steel,
@@ -2520,35 +2554,32 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/simulated/terminal)
-"Ct" = (
-/obj/machinery/telecomms/relay/preset/centcom/tether/station_low,
-/turf/unsimulated/floor/steel,
-/area/centcom/control)
 "Cw" = (
 /obj/machinery/r_n_d/server/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
-"Dc" = (
-/obj/machinery/telecomms/relay/preset/centcom/tether/station_mid,
-/turf/unsimulated/floor/steel,
-/area/centcom/control)
-"Dn" = (
-/obj/machinery/telecomms/relay/preset/centcom/tether/sci_outpost,
-/turf/unsimulated/floor/steel,
-/area/centcom/control)
+"EP" = (
+/obj/machinery/door/airlock/multi_tile/metal,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/centcom/simulated/main_hall)
 "ET" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/simulated/terminal)
 "Fp" = (
 /turf/simulated/floor/maglev,
 /area/centcom/simulated/terminal)
-"FW" = (
-/obj/machinery/telecomms/relay/preset/centcom/underdark,
-/turf/unsimulated/floor/steel,
-/area/centcom/control)
 "Ga" = (
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"GW" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/centcom/simulated/main_hall)
 "HQ" = (
 /obj/machinery/telecomms/broadcaster/preset_cent,
 /turf/unsimulated/floor/steel,
@@ -2582,6 +2613,12 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
+"Lg" = (
+/turf/space/internal_edge/left,
+/area/space)
+"Ln" = (
+/turf/space/internal_edge/top,
+/area/space)
 "ME" = (
 /obj/machinery/computer/rdservercontrol{
 	name = "Master R&amp;D Server Controller";
@@ -2787,7 +2824,7 @@
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid;
 	docking_controller = null;
 	landmark_tag = "escape_cc";
-	name = "Escape Transit"
+	name = "Escape Centcom"
 	},
 /turf/simulated/shuttle/wall,
 /area/shuttle/escape)
@@ -2942,6 +2979,13 @@
 /obj/structure/fans,
 /turf/simulated/shuttle/floor/alien,
 /area/unknown/dorm4)
+"Sy" = (
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/centcom/simulated/main_hall)
 "Sz" = (
 /obj/machinery/smartfridge/survival_pod,
 /obj/item/weapon/storage/mre/menu11,
@@ -3811,6 +3855,10 @@
 /obj/item/weapon/reagent_containers/food/snacks/fries,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
+"Wf" = (
+/turf/space,
+/turf/space/internal_edge/bottomright,
+/area/space)
 "Wh" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -4775,10 +4823,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
-"ZA" = (
-/obj/machinery/telecomms/relay/preset/centcom/tether/base_low,
-/turf/unsimulated/floor/steel,
-/area/centcom/control)
 "ZC" = (
 /obj/machinery/light{
 	icon_state = "tube1";
@@ -9819,19 +9863,19 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
 ap
 ap
 ap
@@ -9961,19 +10005,19 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+Vu
+Ru
+Ru
+Sy
+Ru
+Ru
+Ru
+Ru
+Sy
+Ru
+Ru
+Ru
+Vu
 ap
 ap
 ap
@@ -10103,19 +10147,19 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+Vu
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Vu
 ap
 ap
 ap
@@ -10245,19 +10289,19 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+Vu
+YE
+Ru
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Ru
+Zi
+Vu
 ap
 ap
 ap
@@ -10387,19 +10431,19 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+Vu
+Ru
+Ru
+Vu
+gw
+Lg
+Lg
+Lg
+xz
+Vu
+Ru
+Ru
+Vu
 ap
 ap
 ap
@@ -10529,19 +10573,19 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+Vu
+Ru
+Ru
+Vu
+Ln
+rl
+hp
+hp
+hp
+EP
+Ru
+Ru
+Vu
 ap
 ap
 ap
@@ -10671,19 +10715,19 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+Vu
+Ru
+Ru
+Vu
+Ln
+oo
+vU
+vU
+vU
+GW
+Ru
+Ru
+Vu
 ap
 ap
 ap
@@ -10813,19 +10857,19 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+Vu
+Ru
+Ru
+Vu
+gC
+yf
+yf
+yf
+Wf
+Vu
+Ru
+Ru
+Vu
 ap
 ap
 ap
@@ -10955,19 +10999,19 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+Vu
+YE
+Ru
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Ru
+Zi
+Vu
 ap
 ap
 ap
@@ -11097,19 +11141,19 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+Vu
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Vu
 ap
 ap
 ap
@@ -11239,19 +11283,19 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+Vu
+Ru
+Ru
+jI
+Ru
+Ru
+Ru
+Ru
+jI
+Ru
+Ru
+Ru
+Vu
 ap
 ap
 ap
@@ -11381,19 +11425,19 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
+Vu
 ap
 ap
 ap
@@ -14916,12 +14960,12 @@ ap
 ap
 ap
 ae
-cX
-cX
-cX
-cX
-cX
-cX
+ap
+ap
+ap
+ap
+ap
+ap
 ae
 ae
 ae
@@ -15058,12 +15102,12 @@ ap
 ap
 ap
 ae
-cX
 ap
 ap
 ap
 ap
-cX
+ap
+ap
 ae
 ae
 ae
@@ -15200,12 +15244,12 @@ ap
 ap
 ap
 ae
-cX
 ap
 ap
 ap
 ap
-cX
+ap
+ap
 ae
 ae
 ae
@@ -15342,12 +15386,12 @@ ap
 ap
 ap
 ae
-cX
 ap
 ap
 ap
 ap
-cX
+ap
+ap
 ae
 ae
 ae
@@ -15484,12 +15528,12 @@ ap
 ap
 ap
 ae
-cX
 ap
 ap
 ap
 ap
-cX
+ap
+ap
 ae
 ae
 ae
@@ -15626,12 +15670,12 @@ ap
 ap
 ap
 ae
-cX
-cX
-cX
-cX
-cX
-cX
+ap
+ap
+ap
+ap
+ap
+ap
 ae
 ae
 ae
@@ -17194,7 +17238,7 @@ ae
 ae
 ae
 wy
-kF
+Ga
 Ga
 Iq
 wl
@@ -17620,7 +17664,7 @@ ae
 ae
 ae
 wy
-Ct
+Ga
 Ga
 kh
 wl
@@ -17762,9 +17806,9 @@ ae
 ae
 ae
 wy
-Dc
 Ga
-hn
+Ga
+Ga
 wl
 Up
 Vj
@@ -17904,9 +17948,9 @@ ae
 ae
 ae
 wy
-vt
 Ga
-FW
+Ga
+Ga
 wl
 Up
 Vj
@@ -18046,9 +18090,9 @@ ae
 ae
 ae
 wy
-Dn
 Ga
-ZA
+Ga
+Ga
 wl
 Up
 Vj

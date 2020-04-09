@@ -490,10 +490,15 @@ var/global/list/default_medbay_channels = list(
 					  src, message, displayname, jobname, real_name, M.voice_name,
 					  0, signal.data["compression"], list(0), connection.frequency,verb,speaking)
 //VOREStation Add End
-
+	var/list/levels = list()
+	if(using_map.use_overmap)
+		levels = get_overmap_connections(position.z)
+	else
+		levels = GetConnectedZlevels(position.z)
+		
 	return Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
 					  src, message, displayname, jobname, real_name, M.voice_name,
-					  filter_type, signal.data["compression"], GetConnectedZlevels(position.z), connection.frequency,verb,speaking)
+					  filter_type, signal.data["compression"], levels, connection.frequency,verb,speaking)
 
 
 /obj/item/device/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/language/speaking = null)

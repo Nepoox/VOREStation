@@ -1,7 +1,39 @@
 ///////////////////////////////////
 //// Talon Jobs
-/datum/job/talon
-	faction = "Neutral"
+/datum/department/talon
+	name = DEPARTMENT_TALON
+	short_name = "Talon"
+	color = "#888888"
+	sorting_order = -2
+	assignable = FALSE
+	visible = FALSE
+
+/datum/job/talon/captain
+	title = "Talon Captain"
+	departments_managed = list(DEPARTMENT_TALON)
+	job_description = "The captain's job is to generate profit through trade or other means such as salvage or even privateering."
+	outfit_type = /decl/hierarchy/outfit/job/talon_captain
+
+	offmap_spawn = TRUE
+	faction = "Station" //Required for SSjob to allow people to join as it
+	departments = list(DEPARTMENT_TALON)
+	total_positions = 1
+	spawn_positions = 1
+	selection_color = "#999999"
+	economic_modifier = 7
+	minimal_player_age = 14
+	pto_type = null
+	access = list(access_talon)
+	minimal_access = list(access_talon)
+
+/datum/job/talon/doctor
+	title = "Talon Doctor"
+	job_description = "The doctor's job is to make sure the crew of the ITV Talon remain in good health and to monitor them when away from the ship."
+	supervisors = "the ITV Talon's captain"
+	outfit_type = /decl/hierarchy/outfit/job/talon_doctor
+
+	offmap_spawn = TRUE
+	faction = "Station" //Required for SSjob to allow people to join as it
 	departments = list(DEPARTMENT_TALON)
 	total_positions = 1
 	spawn_positions = 1
@@ -12,37 +44,66 @@
 	access = list(access_talon)
 	minimal_access = list(access_talon)
 
-/datum/job/talon/captain
-	title = "Captain"
-	economic_modifier = 7
-	job_description = "The captain's job is to generate profit through trade or other means such as salvage or even privateering."
-	outfit_type = /decl/hierarchy/outfit/job/talon_captain
-
-/datum/job/talon/doctor
-	title = "Doctor"
-	job_description = "The doctor's job is to make sure the crew of the ITV Talon remain in good health and to monitor them when away from the ship."
-	outfit_type = /decl/hierarchy/outfit/job/talon_doctor
-
 /datum/job/talon/engineer
-	title = "Engineer"
+	title = "Talon Engineer"
 	job_description = "The engineer's job is to ensure the ITV Talon remains in tip-top shape and to repair any damage as well as manage the shields."
+	supervisors = "the ITV Talon's captain"
 	outfit_type = /decl/hierarchy/outfit/job/talon_engineer
 
+	offmap_spawn = TRUE
+	faction = "Station" //Required for SSjob to allow people to join as it
+	departments = list(DEPARTMENT_TALON)
+	total_positions = 1
+	spawn_positions = 1
+	selection_color = "#aaaaaa"
+	economic_modifier = 5
+	minimal_player_age = 14
+	pto_type = null
+	access = list(access_talon)
+	minimal_access = list(access_talon)
+
 /datum/job/talon/pilot
-	title = "Pilot"
+	title = "Talon Pilot"
 	job_description = "The pilot's job is to fly the ITV Talon in the most efficient and profitable way possible."
+	supervisors = "the ITV Talon's captain"
 	outfit_type = /decl/hierarchy/outfit/job/talon_pilot
 
+	offmap_spawn = TRUE
+	faction = "Station" //Required for SSjob to allow people to join as it
+	departments = list(DEPARTMENT_TALON)
+	total_positions = 1
+	spawn_positions = 1
+	selection_color = "#aaaaaa"
+	economic_modifier = 5
+	minimal_player_age = 14
+	pto_type = null
+	access = list(access_talon)
+	minimal_access = list(access_talon)
+
 /datum/job/talon/guard
-	title = "Guard"
+	title = "Talon Guard"
 	job_description = "The guard's job is to keep the crew of the ITV Talon safe and ensure the captain's wishes are carried out."
+	supervisors = "the ITV Talon's captain"
 	outfit_type = /decl/hierarchy/outfit/job/talon_security
+
+	offmap_spawn = TRUE
+	faction = "Station" //Required for SSjob to allow people to join as it
+	departments = list(DEPARTMENT_TALON)
+	total_positions = 1
+	spawn_positions = 1
+	selection_color = "#aaaaaa"
+	economic_modifier = 5
+	minimal_player_age = 14
+	pto_type = null
+	access = list(access_talon)
+	minimal_access = list(access_talon)
 
 /decl/hierarchy/outfit/job/talon_captain
 	name = OUTFIT_JOB_NAME("Talon Captain")
 
 	id_type = /obj/item/weapon/card/id/gold
-	pda_type = /obj/item/device/pda/captain
+	id_slot = slot_wear_id
+	pda_type = null
 
 	l_ear = /obj/item/device/radio/headset/talon
 	glasses = /obj/item/clothing/glasses/sunglasses
@@ -57,8 +118,7 @@
 	id_pda_assignment = "Pilot"
 
 	id_slot = slot_wear_id
-	pda_slot = slot_belt
-	pda_type = /obj/item/device/pda
+	pda_type = null
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
 
 	l_ear = /obj/item/device/radio/headset/talon
@@ -72,9 +132,9 @@
 	name = OUTFIT_JOB_NAME("Talon Doctor")
 	hierarchy_type = /decl/hierarchy/outfit/job
 
-	pda_slot = slot_l_store
-	pda_type = /obj/item/device/pda/medical
 	id_type = /obj/item/weapon/card/id/medical
+	id_slot = slot_wear_id
+	pda_type = null
 
 	l_ear = /obj/item/device/radio/headset/talon
 	shoes = /obj/item/clothing/shoes/white
@@ -90,8 +150,9 @@
 	name = OUTFIT_JOB_NAME("Talon Security")
 	hierarchy_type = /decl/hierarchy/outfit/job
 
-	pda_type = /obj/item/device/pda/security
 	id_type = /obj/item/weapon/card/id/security
+	id_slot = slot_wear_id
+	pda_type = null
 	backpack_contents = list(/obj/item/weapon/handcuffs = 1)
 
 	l_ear = /obj/item/device/radio/headset/talon
@@ -107,9 +168,9 @@
 	name = OUTFIT_JOB_NAME("Talon Engineer")
 	hierarchy_type = /decl/hierarchy/outfit/job
 
-	pda_slot = slot_l_store
-	pda_type = /obj/item/device/pda/atmos
 	id_type = /obj/item/weapon/card/id/engineering
+	id_slot = slot_wear_id
+	pda_type = null
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL
 
 	l_ear = /obj/item/device/radio/headset/talon

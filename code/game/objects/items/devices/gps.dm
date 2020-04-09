@@ -82,7 +82,10 @@ var/list/GPS_list = list()
 	dat["curr_z"] = curr.z
 	dat["curr_z_name"] = using_map.get_zlevel_name(curr.z)
 	dat["gps_list"] = list()
-	dat["z_level_detection"] = using_map.get_map_levels(curr.z, long_range)
+	if(using_map.use_overmap)
+		dat["z_level_detection"] = get_overmap_connections(curr.z, long_range ? 0 : null)
+	else
+		dat["z_level_detection"] = using_map.get_map_levels(curr.z, long_range)
 
 	for(var/obj/item/device/gps/G in GPS_list - src)
 		if(!G.tracking || G.emped || G.hide_signal)

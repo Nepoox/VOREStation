@@ -368,8 +368,13 @@
 
 	//Find our spawning point.
 	var/list/join_props = job_master.LateSpawn(client, rank)
+	
+	if(!join_props)
+		return
+
 	var/turf/T = join_props["turf"]
 	var/join_message = join_props["msg"]
+	var/announce_channel = join_props["channel"] || "Common"
 
 	if(!T || !join_message)
 		return 0
@@ -419,18 +424,18 @@
 
 		//Grab some data from the character prefs for use in random news procs.
 
-		AnnounceArrival(character, rank, join_message)
+		AnnounceArrival(character, rank, join_message, announce_channel)
 	else
-		AnnounceCyborg(character, rank, join_message)
+		AnnounceCyborg(character, rank, join_message, announce_channel)
 
 	qdel(src)
 
-/mob/new_player/proc/AnnounceCyborg(var/mob/living/character, var/rank, var/join_message)
+/mob/new_player/proc/AnnounceCyborg(var/mob/living/character, var/rank, var/join_message, var/channel)
 	if (ticker.current_state == GAME_STATE_PLAYING)
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
 		// can't use their name here, since cyborg namepicking is done post-spawn, so we'll just say "A new Cyborg has arrived"/"A new Android has arrived"/etc.
-		global_announcer.autosay("A new[rank ? " [rank]" : " visitor" ] [join_message ? join_message : "has arrived on the station"].", "Arrivals Announcement Computer")
+		global_announcer.autosay("A new[rank ? " [rank]" : " visitor" ] [join_message ? join_message : "has arrived on the station"].", "Arrivals Announcement Computer", channel)
 
 /mob/new_player/proc/LateChoices()
 	var/name = client.prefs.be_random_name ? "friend" : client.prefs.real_name

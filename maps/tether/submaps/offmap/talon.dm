@@ -8,6 +8,35 @@
 	id = access_talon
 	access_type = ACCESS_TYPE_PRIVATE
 
+
+var/global/list/latejoin_talon = list()
+/obj/effect/landmark/talon
+	name = "JoinLateTalon"
+	delete_me = 1
+
+/obj/effect/landmark/talon/New()
+	latejoin_talon += loc // Register this turf as tram latejoin.
+	..()
+
+/datum/spawnpoint/talon
+	display_name = "ITV Talon Cryo"
+	restrict_job = list("Talon Captain", "Talon Pilot", "Talon Engineer", "Talon Doctor", "Talon Guard")
+	msg = "has come out of cryostasis"
+	announce_channel = "Talon"
+
+/datum/spawnpoint/talon/New()
+	..()
+	turfs = latejoin_talon
+
+/obj/machinery/cryopod/talon
+	announce_channel = "Talon"
+	on_store_message = "has entered cryogenic storage."
+	on_store_name = "ITV Talon Cryo"
+	on_enter_visible_message = "starts climbing into the"
+	on_enter_occupant_message = "You feel cool air surround you. You go numb as your senses turn inward."
+	on_store_visible_message_1 = "hums and hisses as it moves"
+	on_store_visible_message_2 = "into cryogenic storage."
+
 // Map template for spawning the shuttle
 /datum/map_template/offmap/talon1
 	name = "Offmap Ship - Talon Z1"
@@ -65,56 +94,8 @@
 /area/shuttle/talonboat
 	name = "Talon's Boat"
 
-
-/obj/machinery/telecomms/allinone/talon
+/obj/machinery/telecomms/allinone/overmap/talon
 	freq_listening = list(PUB_FREQ, TALON_FREQ)
-
-/obj/machinery/telecomms/allinone/talon/receive_signal(datum/signal/signal)
-
-	if(!on) // has to be on to receive messages
-		return
-
-	if(is_freq_listening(signal)) // detect subspace signals
-
-		signal.data["done"] = 1 // mark the signal as being broadcasted
-		signal.data["compression"] = 0
-
-		// Search for the original signal and mark it as done as well
-		var/datum/signal/original = signal.data["original"]
-		if(original)
-			original.data["done"] = 1
-
-		// For some reason level is both used as a list and not a list, and now it needs to be a list.
-		// Because this is a 'all in one' machine, we're gonna just cheat.
-		if(using_map.use_overmap)
-			signal.data["level"] = get_overmap_connections(z, 0)
-		else
-			signal.data["level"] = using_map.contact_levels.Copy()
-
-		if(signal.data["slow"] > 0)
-			sleep(signal.data["slow"]) // simulate the network lag if necessary
-
-		/* ###### Broadcast a message using signal.data ###### */
-
-		var/datum/radio_frequency/connection = signal.data["connection"]
-
-		if(connection.frequency in ANTAG_FREQS) // if antag broadcast, just
-			Broadcast_Message(signal.data["connection"], signal.data["mob"],
-							  signal.data["vmask"], signal.data["vmessage"],
-							  signal.data["radio"], signal.data["message"],
-							  signal.data["name"], signal.data["job"],
-							  signal.data["realname"], signal.data["vname"],, signal.data["compression"], list(0), connection.frequency,
-							  signal.data["verb"], signal.data["language"])
-		else
-			if(intercept)
-				Broadcast_Message(signal.data["connection"], signal.data["mob"],
-							  signal.data["vmask"], signal.data["vmessage"],
-							  signal.data["radio"], signal.data["message"],
-							  signal.data["name"], signal.data["job"],
-							  signal.data["realname"], signal.data["vname"], 3, signal.data["compression"], list(0), connection.frequency,
-							  signal.data["verb"], signal.data["language"])
-
-
 
 // Contains info for off-map spawn sites
 /area/talon/maintenance/deckone_port

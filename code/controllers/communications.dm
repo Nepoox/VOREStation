@@ -157,6 +157,8 @@ var/list/ANTAG_FREQS = list(SYND_FREQ, RAID_FREQ)
 //Department channels, arranged lexically
 var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC_FREQ, SCI_FREQ, SRV_FREQ, SUP_FREQ)
 
+var/list/OFFMAP_FREQS = list(TALON_FREQ) //VOREStation Add
+
 #define TRANSMISSION_WIRE	0
 #define TRANSMISSION_RADIO	1
 
@@ -192,7 +194,10 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC
 		return "entradio"
 	if(frequency in DEPT_FREQS)
 		return "deptradio"
-
+	//VOREStation Add
+	if(frequency in OFFMAP_FREQS)
+		return "expradio"
+	//VOREStation Add End
 	return "radio"
 
 /* filters */

@@ -37,7 +37,10 @@
 	var/turf/T = get_turf(nano_host())
 
 	data["isAI"] = isAI(user)
-	data["map_levels"] = using_map.get_map_levels(T.z, FALSE)
+	if(using_map.use_overmap)
+		data["map_levels"] = get_overmap_connections(T.z, 0)
+	else
+		data["map_levels"] = using_map.get_map_levels(T.z, FALSE)
 	data["crewmembers"] = list()
 	for(var/z in data["map_levels"])			// VOREStation Edit
 		data["crewmembers"] += crew_repository.health_data(z)
