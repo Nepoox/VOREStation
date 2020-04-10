@@ -39,6 +39,8 @@
 	var/client_huds = list()
 
 	var/list/camera_computers_using_this = list()
+	var/cnetref
+	var/crref
 
 /obj/machinery/camera/apply_visual(mob/living/carbon/human/M)
 	if(!M.client)
@@ -63,6 +65,8 @@
 	assembly = new(src)
 	assembly.state = 4
 	client_huds |= global_hud.whitense
+	cnetref = cameranet
+	crref = camera_repository
 
 	/* // Use this to look for cameras that have the same c_tag.
 	for(var/obj/machinery/camera/C in cameranet.cameras)

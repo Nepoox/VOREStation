@@ -292,7 +292,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 				relay_information(signal, "/obj/machinery/telecomms/bus") // Send it to a bus instead, if it's linked to one
 
 /obj/machinery/telecomms/receiver/proc/check_receive_level(datum/signal/signal)
-	var/list/listening_levels = get_overmap_connections(listening_level, overmap_range)
+	var/list/listening_levels = using_map.get_map_levels(listening_level, TRUE, overmap_range)
 	
 	if(!(signal.data["level"] in listening_levels))
 		for(var/obj/machinery/telecomms/hub/H in links)
@@ -411,10 +411,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 	// Add our level and send it back
 	if(can_send(signal))
-		if(using_map.use_overmap)
-			signal.data["level"] |= get_overmap_connections(listening_level, overmap_range)
-		else
-			signal.data["level"] |= listening_level
+		signal.data["level"] |= using_map.get_map_levels(listening_level, TRUE, overmap_range)
 
 // Checks to see if it can send/receive.
 

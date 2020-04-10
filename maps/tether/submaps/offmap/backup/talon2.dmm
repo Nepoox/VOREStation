@@ -16,6 +16,9 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular/open{
+	id = "talon_windows"
+	},
 /turf/simulated/floor/plating,
 /area/talon/decktwo/bridge_upper)
 "ae" = (
@@ -84,7 +87,7 @@
 /turf/simulated/wall/rshull,
 /area/talon/decktwo/cap_room)
 "aq" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/talon{
 	dir = 4;
 	icon_state = "alarm0";
 	pixel_x = -22;
@@ -107,6 +110,10 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/camera/network/talon{
+	icon_state = "camera";
+	dir = 10
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/bridge_upper)
 "au" = (
@@ -115,7 +122,7 @@
 	dir = 2;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/talon{
 	dir = 2;
 	name = "south bump";
 	pixel_y = -28;
@@ -152,6 +159,12 @@
 /area/talon/decktwo/cap_room)
 "aA" = (
 /obj/structure/table/woodentable,
+/obj/machinery/firealarm{
+	dir = 2;
+	layer = 3.3;
+	pixel_x = 0;
+	pixel_y = 26
+	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/talon/decktwo/cap_room)
 "aB" = (
@@ -178,7 +191,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/vending/cart,
+/obj/machinery/vending/nifsoft_shop,
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/central_hallway)
 "aF" = (
@@ -197,6 +210,10 @@
 /obj/item/weapon/stool/baystool/padded,
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
+	},
+/obj/machinery/camera/network/talon{
+	icon_state = "camera";
+	dir = 6
 	},
 /turf/simulated/floor/lino,
 /area/talon/decktwo/bar)
@@ -219,11 +236,18 @@
 	icon_state = "bulb1";
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/clothing/suit/space/void/captain,
-/obj/item/clothing/head/helmet/space/capspace,
+/obj/structure/closet/secure_closet/personal/cabinet{
+	req_access = list(301)
+	},
 /obj/item/weapon/tank/oxygen,
 /obj/item/device/suit_cooling_unit,
+/obj/item/clothing/suit/space/void/captain{
+	name = "\improper captain's armor"
+	},
+/obj/item/clothing/head/helmet/space/void/captain{
+	camera_networks = list("TalonHelmets");
+	name = "\improper captain's helmet"
+	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/cap_room)
 "aM" = (
@@ -255,7 +279,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
 "aP" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/talon{
 	dir = 4;
 	icon_state = "alarm0";
 	pixel_x = -22;
@@ -359,6 +383,9 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/machinery/door/blast/regular/open{
+	id = "talon_windows"
+	},
 /turf/simulated/floor/plating,
 /area/talon/decktwo/cap_room)
 "bb" = (
@@ -410,6 +437,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/command{
+	id_tag = "talon_capdoor";
 	name = "Talon Secure Airlock";
 	req_one_access = list(301)
 	},
@@ -496,6 +524,9 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/machinery/door/blast/regular/open{
+	id = "talon_windows"
+	},
 /turf/simulated/floor/plating,
 /area/talon/decktwo/bar)
 "bl" = (
@@ -506,6 +537,9 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/machinery/door/blast/regular/open{
+	id = "talon_windows"
 	},
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_port)
@@ -541,6 +575,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
 	},
+/obj/structure/sign/department/commander{
+	pixel_x = -28
+	},
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
 "bq" = (
@@ -572,6 +609,9 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/machinery/door/blast/regular/open{
+	id = "talon_windows"
+	},
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_starboard)
 "bu" = (
@@ -583,7 +623,7 @@
 /area/talon/decktwo/cap_room)
 "bv" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/talon{
 	dir = 4;
 	name = "east bump";
 	pixel_x = 24
@@ -606,7 +646,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/talon{
 	cell_type = /obj/item/weapon/cell/apc;
 	dir = 8;
 	name = "west bump";
@@ -638,7 +678,7 @@
 /turf/simulated/floor/lino,
 /area/talon/decktwo/bar)
 "bB" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/talon{
 	dir = 4;
 	icon_state = "alarm0";
 	pixel_x = -22;
@@ -697,6 +737,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
 	},
+/obj/structure/sign/department/bar{
+	pixel_x = 29
+	},
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
 "bH" = (
@@ -736,7 +779,7 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/talon/decktwo/cap_room)
 "bM" = (
-/obj/item/modular_computer/console,
+/obj/item/modular_computer/console/preset/talon,
 /turf/simulated/floor/carpet/blucarpet,
 /area/talon/decktwo/cap_room)
 "bN" = (
@@ -836,6 +879,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/bar)
 "bW" = (
@@ -845,6 +892,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/oxygen_pump{
+	icon_state = "oxygen_tank";
+	dir = 1;
+	pixel_y = -30
 	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/bar)
@@ -973,6 +1025,9 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
+	},
+/obj/structure/sign/deck2{
+	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
@@ -1218,6 +1273,7 @@
 	pixel_y = 0
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
+/obj/machinery/camera/network/talon,
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
 "cK" = (
@@ -1423,6 +1479,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
+/obj/machinery/camera/network/talon,
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
 "cW" = (
@@ -1518,6 +1575,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
+/obj/machinery/oxygen_pump{
+	icon_state = "oxygen_tank";
+	dir = 1;
+	pixel_y = -30
+	},
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
 "dd" = (
@@ -1560,7 +1622,7 @@
 	dir = 4
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/talon{
 	dir = 2;
 	name = "south bump";
 	pixel_y = -24
@@ -1592,6 +1654,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
+/obj/structure/sign/department/telecoms{
+	pixel_y = -31
+	},
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
 "dh" = (
@@ -1620,6 +1685,9 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
+	},
+/obj/structure/sign/department/shield{
+	pixel_y = -31
 	},
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
@@ -1655,6 +1723,11 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
+	},
+/obj/machinery/oxygen_pump{
+	icon_state = "oxygen_tank";
+	dir = 1;
+	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
@@ -1808,7 +1881,7 @@
 /area/talon/decktwo/central_hallway)
 "dy" = (
 /obj/structure/table/woodentable,
-/obj/item/modular_computer/laptop/preset/custom_loadout/standard,
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/engineer,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
 "dz" = (
@@ -1818,13 +1891,17 @@
 "dA" = (
 /obj/item/weapon/bedsheet,
 /obj/structure/bed/padded,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 26
+	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
 "dB" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/alarm/talon{
 	dir = 4;
 	icon_state = "alarm0";
 	pixel_x = -22;
@@ -1834,6 +1911,8 @@
 	dir = 9
 	},
 /obj/structure/table/standard,
+/obj/machinery/cell_charger,
+/obj/item/weapon/cell/apc,
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/tech)
 "dC" = (
@@ -1843,12 +1922,6 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/machinery/light_switch{
-	dir = 2;
-	name = "light switch ";
-	pixel_x = 6;
-	pixel_y = 32
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -1856,6 +1929,7 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
+/obj/item/weapon/paper/talon_shields,
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/tech)
 "dD" = (
@@ -1911,6 +1985,10 @@
 "dG" = (
 /obj/item/weapon/bedsheet,
 /obj/structure/bed/padded,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/pilot_room)
 "dH" = (
@@ -1922,7 +2000,7 @@
 /area/talon/decktwo/pilot_room)
 "dI" = (
 /obj/structure/table/woodentable,
-/obj/item/modular_computer/laptop/preset/custom_loadout/standard,
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/pilot,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/pilot_room)
 "dJ" = (
@@ -1931,7 +2009,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm{
+/obj/machinery/alarm/talon{
 	dir = 4;
 	icon_state = "alarm0";
 	pixel_x = -22;
@@ -1964,7 +2042,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/talon{
 	cell_type = /obj/item/weapon/cell/apc;
 	dir = 8;
 	name = "west bump";
@@ -1979,15 +2057,18 @@
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
 "dN" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/talon{
 	dir = 8;
 	pixel_x = 22;
 	pixel_y = 0
 	},
+/obj/effect/landmark/start{
+	name = "Talon Engineer"
+	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
 "dO" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/talon{
 	cell_type = /obj/item/weapon/cell/apc;
 	dir = 8;
 	name = "west bump";
@@ -2062,11 +2143,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/tech)
 "dT" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/talon{
 	dir = 4;
 	icon_state = "alarm0";
 	pixel_x = -22;
 	pixel_y = 0
+	},
+/obj/effect/landmark/start{
+	name = "Talon Pilot"
 	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/pilot_room)
@@ -2077,7 +2161,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/talon{
 	dir = 4;
 	name = "east bump";
 	pixel_x = 24
@@ -2107,7 +2191,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm{
+/obj/machinery/alarm/talon{
 	dir = 8;
 	pixel_x = 22;
 	pixel_y = 0
@@ -2130,6 +2214,12 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
 	},
+/obj/structure/sign/directions/roomnum{
+	icon_state = "roomnum";
+	dir = 4;
+	pixel_x = 32;
+	pixel_y = -9
+	},
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
 "dZ" = (
@@ -2149,6 +2239,7 @@
 /area/talon/decktwo/eng_room)
 "eb" = (
 /obj/machinery/door/airlock/command{
+	id_tag = "talon_engdoor";
 	name = "Talon Secure Airlock";
 	req_one_access = list(301)
 	},
@@ -2168,7 +2259,7 @@
 /area/talon/decktwo/tech)
 "ed" = (
 /obj/structure/cable/green,
-/obj/machinery/power/shield_generator,
+/obj/machinery/power/shield_generator/charged,
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/tech)
 "ee" = (
@@ -2182,6 +2273,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/tech)
 "ef" = (
+/obj/machinery/camera/network/talon{
+	icon_state = "camera";
+	dir = 9
+	},
 /turf/simulated/floor/bluegrid,
 /area/talon/decktwo/tech)
 "eg" = (
@@ -2216,6 +2311,10 @@
 	dir = 10;
 	icon_state = "borderfloorcorner2";
 	pixel_x = 0
+	},
+/obj/structure/sign/directions/roomnum{
+	pixel_x = -31;
+	pixel_y = -9
 	},
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
@@ -2274,6 +2373,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock{
+	id_tag = "talon_engdoor";
 	name = "Engineer's Cabin";
 	req_one_access = list(301)
 	},
@@ -2333,6 +2433,11 @@
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 9
 	},
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_x = 2;
+	pixel_y = -28
+	},
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/tech)
 "et" = (
@@ -2361,6 +2466,10 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/borderfloor/corner2,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/tech)
 "ev" = (
@@ -2406,6 +2515,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock{
+	id_tag = "talon_pilotdoor";
 	name = "Pilot's Cabin";
 	req_one_access = list(301)
 	},
@@ -2475,6 +2585,13 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
+/obj/machinery/button/remote/airlock{
+	dir = 8;
+	id = "talon_engdoor";
+	name = "Door Bolts";
+	pixel_x = -28;
+	specialfunctions = 4
+	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/eng_room)
 "eE" = (
@@ -2489,14 +2606,13 @@
 	req_access = newlist()
 	},
 /obj/item/clothing/suit/space/void/atmos,
-/obj/item/clothing/head/helmet/space/void/atmos,
+/obj/item/clothing/head/helmet/space/void/atmos{
+	camera_networks = list("TalonHelmets")
+	},
 /obj/item/weapon/tank/oxygen,
 /obj/item/device/suit_cooling_unit,
 /turf/simulated/floor/wood,
 /area/talon/decktwo/eng_room)
-"eG" = (
-/turf/simulated/wall,
-/area/talon/decktwo/backup_bridge)
 "eH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2509,7 +2625,7 @@
 	req_one_access = list(301)
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/talon/decktwo/backup_bridge)
+/area/talon/decktwo/tech)
 "eI" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -2518,7 +2634,9 @@
 	req_access = newlist()
 	},
 /obj/item/clothing/suit/space/void/pilot,
-/obj/item/clothing/head/helmet/space/void/pilot,
+/obj/item/clothing/head/helmet/space/void/pilot{
+	camera_networks = list("TalonHelmets")
+	},
 /obj/item/weapon/tank/oxygen,
 /obj/item/device/suit_cooling_unit,
 /turf/simulated/floor/wood,
@@ -2532,6 +2650,13 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "talon_pilotdoor";
+	name = "Door Bolts";
+	pixel_x = 28;
+	specialfunctions = 4
+	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/pilot_room)
 "eL" = (
@@ -2632,7 +2757,7 @@
 /area/talon/decktwo/med_room)
 "eU" = (
 /obj/structure/table/woodentable,
-/obj/item/modular_computer/laptop/preset/custom_loadout/standard,
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/medical,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/med_room)
 "eV" = (
@@ -2642,6 +2767,10 @@
 "eW" = (
 /obj/item/weapon/bedsheet,
 /obj/structure/bed/padded,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 26
+	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/med_room)
 "eX" = (
@@ -2664,6 +2793,10 @@
 "fa" = (
 /obj/item/weapon/bedsheet,
 /obj/structure/bed/padded,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/sec_room)
 "fb" = (
@@ -2672,7 +2805,7 @@
 /area/talon/decktwo/sec_room)
 "fc" = (
 /obj/structure/table/woodentable,
-/obj/item/modular_computer/laptop/preset/custom_loadout/standard,
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/security,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/sec_room)
 "fd" = (
@@ -2787,7 +2920,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/talon{
 	cell_type = /obj/item/weapon/cell/apc;
 	dir = 8;
 	name = "west bump";
@@ -2802,10 +2935,13 @@
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/med_room)
 "fn" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/talon{
 	dir = 8;
 	pixel_x = 22;
 	pixel_y = 0
+	},
+/obj/effect/landmark/start{
+	name = "Talon Doctor"
 	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/med_room)
@@ -2814,7 +2950,7 @@
 	icon_state = "bay_chair_preview";
 	dir = 1
 	},
-/obj/machinery/power/apc/hyper{
+/obj/machinery/power/apc/talon/hyper{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -2835,7 +2971,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/backup_bridge)
 "fq" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/talon{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -2855,11 +2991,14 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/backup_bridge)
 "fr" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/talon{
 	dir = 4;
 	icon_state = "alarm0";
 	pixel_x = -22;
 	pixel_y = 0
+	},
+/obj/effect/landmark/start{
+	name = "Talon Guard"
 	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/sec_room)
@@ -2870,7 +3009,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/talon{
 	dir = 4;
 	name = "east bump";
 	pixel_x = 24
@@ -2949,6 +3088,10 @@
 /area/talon/decktwo/med_room)
 "fC" = (
 /obj/structure/bed/chair/bay/chair,
+/obj/machinery/camera/network/talon{
+	icon_state = "camera";
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/talon/decktwo/backup_bridge)
 "fD" = (
@@ -3044,6 +3187,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock{
+	id_tag = "talon_meddoor";
 	name = "Doctor's Cabin";
 	req_one_access = list(301)
 	},
@@ -3134,6 +3278,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock{
+	id_tag = "talon_secdoor";
 	name = "Guard's Cabin";
 	req_one_access = list(301)
 	},
@@ -3181,6 +3326,13 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
+/obj/machinery/button/remote/airlock{
+	dir = 8;
+	id = "talon_meddoor";
+	name = "Door Bolts";
+	pixel_x = -28;
+	specialfunctions = 4
+	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/med_room)
 "ga" = (
@@ -3195,7 +3347,9 @@
 	req_access = newlist()
 	},
 /obj/item/clothing/suit/space/void/medical,
-/obj/item/clothing/head/helmet/space/void/medical,
+/obj/item/clothing/head/helmet/space/void/medical{
+	camera_networks = list("TalonHelmets")
+	},
 /obj/item/weapon/tank/oxygen,
 /obj/item/device/suit_cooling_unit,
 /turf/simulated/floor/wood,
@@ -3208,7 +3362,9 @@
 	req_access = newlist()
 	},
 /obj/item/clothing/suit/space/void/security,
-/obj/item/clothing/head/helmet/space/void/security,
+/obj/item/clothing/head/helmet/space/void/security{
+	camera_networks = list("TalonHelmets")
+	},
 /obj/item/weapon/tank/oxygen,
 /obj/item/device/suit_cooling_unit,
 /turf/simulated/floor/wood,
@@ -3222,6 +3378,13 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "talon_secdoor";
+	name = "Door Bolts";
+	pixel_x = 28;
+	specialfunctions = 4
+	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/sec_room)
 "gf" = (
@@ -3258,7 +3421,7 @@
 	req_one_access = list(301)
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/talon/decktwo/backup_bridge)
+/area/talon/maintenance/decktwo_aft)
 "gi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -3296,6 +3459,10 @@
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 6
 	},
+/obj/machinery/camera/network/talon{
+	icon_state = "camera";
+	dir = 9
+	},
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
 "gl" = (
@@ -3321,6 +3488,7 @@
 	icon_state = "borderfloorcorner2";
 	pixel_y = 0
 	},
+/obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
 "gn" = (
@@ -3378,6 +3546,7 @@
 	icon_state = "borderfloorcorner2";
 	pixel_x = 0
 	},
+/obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
 "gw" = (
@@ -3388,7 +3557,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
 "gx" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/talon{
 	dir = 4;
 	icon_state = "alarm0";
 	pixel_x = -22;
@@ -3460,7 +3629,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm{
+/obj/machinery/alarm/talon{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -3486,6 +3655,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
 "gI" = (
+/obj/structure/sign/deck2{
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/decktwo/central_hallway)
 "gJ" = (
@@ -3604,7 +3776,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
 "gX" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/talon{
 	dir = 4;
 	icon_state = "alarm0";
 	pixel_x = -22;
@@ -3625,7 +3797,7 @@
 	dir = 2;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/talon{
 	dir = 4;
 	name = "east bump";
 	pixel_x = 24
@@ -3676,7 +3848,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "hh" = (
-/obj/machinery/cryopod{
+/obj/machinery/cryopod/talon{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -3687,6 +3859,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/effect/landmark/talon,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/talon/decktwo/central_hallway)
 "hj" = (
@@ -3697,7 +3870,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_starboard)
 "hk" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/talon{
 	dir = 8;
 	pixel_x = 22;
 	pixel_y = 0
@@ -3748,6 +3921,7 @@
 	pixel_x = 32
 	},
 /obj/machinery/light/small,
+/obj/effect/landmark/talon,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/talon/decktwo/central_hallway)
 "hr" = (
@@ -3771,7 +3945,7 @@
 	dir = 2;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/talon{
 	dir = 4;
 	name = "east bump";
 	pixel_x = 24
@@ -3925,6 +4099,10 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "0-2"
 	},
+/obj/structure/cable/yellow{
+	d2 = 8;
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/reinforced/airless,
 /area/talon/maintenance/decktwo_solars)
 "hL" = (
@@ -3953,6 +4131,10 @@
 	icon_state = "0-8"
 	},
 /obj/structure/cable/heavyduty,
+/obj/structure/cable/yellow{
+	d2 = 4;
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/reinforced/airless,
 /area/talon/maintenance/decktwo_solars)
 "hO" = (
@@ -3991,6 +4173,9 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/structure/sign/deck2{
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/central_hallway)
 "hU" = (
@@ -4039,7 +4224,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/talon{
 	dir = 4;
 	name = "east bump";
 	pixel_x = 24
@@ -4050,6 +4235,10 @@
 "ib" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "2-4"
+	},
+/obj/machinery/camera/network/talon{
+	icon_state = "camera";
+	dir = 6
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/talon/maintenance/decktwo_aft)
@@ -4097,6 +4286,9 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
+/obj/structure/sign/warning/falling{
+	pixel_x = 31
+	},
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "ih" = (
@@ -4151,6 +4343,9 @@
 "im" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small,
+/obj/structure/sign/warning/airlock{
+	pixel_y = -32
+	},
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "in" = (
@@ -4172,7 +4367,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/bridge_upper)
 "iq" = (
-/obj/machinery/telecomms/allinone/talon,
+/obj/machinery/telecomms/allinone/overmap/talon,
 /turf/simulated/floor/bluegrid,
 /area/talon/decktwo/tech)
 "ir" = (
@@ -4357,6 +4552,10 @@
 	icon_state = "intact-aux";
 	dir = 9
 	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "iL" = (
@@ -4366,6 +4565,230 @@
 /obj/machinery/ntnet_relay,
 /turf/simulated/floor/bluegrid,
 /area/talon/decktwo/tech)
+"rJ" = (
+/obj/effect/landmark/start{
+	name = "Talon Captain"
+	},
+/turf/simulated/floor/carpet/blucarpet,
+/area/talon/decktwo/cap_room)
+"tl" = (
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/talon/decktwo/bridge_upper)
+"uU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/machinery/oxygen_pump{
+	icon_state = "oxygen_tank";
+	dir = 4;
+	pixel_x = 30
+	},
+/turf/simulated/floor/tiled/steel,
+/area/talon/decktwo/central_hallway)
+"CP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/steel,
+/area/talon/decktwo/central_hallway)
+"EX" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	layer = 3.3;
+	pixel_x = 26
+	},
+/turf/simulated/floor/tiled/steel,
+/area/talon/decktwo/central_hallway)
+"FW" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/machinery/camera/network/talon{
+	icon_state = "camera";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/talon/decktwo/central_hallway)
+"Hc" = (
+/obj/structure/table/steel,
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "talon_windows";
+	name = "window blast shields"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/talon/decktwo/bridge_upper)
+"JH" = (
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/structure/sign/securearea{
+	pixel_x = 0;
+	pixel_y = 30
+	},
+/turf/simulated/floor/plating,
+/area/talon/maintenance/decktwo_aft)
+"KI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10;
+	icon_state = "borderfloorcorner2";
+	pixel_x = 0
+	},
+/obj/structure/sign/directions/roomnum{
+	icon_state = "roomnum";
+	dir = 1;
+	pixel_x = -31;
+	pixel_y = -9
+	},
+/turf/simulated/floor/tiled/steel,
+/area/talon/decktwo/central_hallway)
+"Lx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/structure/sign/directions/roomnum{
+	icon_state = "roomnum";
+	dir = 8;
+	pixel_x = 32;
+	pixel_y = -9
+	},
+/turf/simulated/floor/tiled/steel,
+/area/talon/decktwo/central_hallway)
+"Ne" = (
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "talon_capdoor";
+	name = "Door Bolts";
+	pixel_x = 28;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/wood,
+/area/talon/decktwo/cap_room)
+"Pf" = (
+/obj/structure/sign/poster,
+/turf/simulated/wall,
+/area/talon/decktwo/bar)
+"PB" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 26
+	},
+/turf/simulated/floor/tiled/steel,
+/area/talon/decktwo/central_hallway)
+"QL" = (
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/structure/sign/securearea{
+	pixel_x = 0;
+	pixel_y = 30
+	},
+/turf/simulated/floor/plating,
+/area/talon/maintenance/decktwo_aft)
+"TO" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/machinery/camera/network/talon{
+	icon_state = "camera";
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel,
+/area/talon/decktwo/central_hallway)
+"Vn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/machinery/oxygen_pump{
+	icon_state = "oxygen_tank";
+	dir = 8;
+	pixel_x = -30
+	},
+/turf/simulated/floor/tiled/steel,
+/area/talon/decktwo/central_hallway)
 
 (1,1,1) = {"
 aa
@@ -12795,8 +13218,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+ao
+ao
 ao
 ao
 ao
@@ -12937,8 +13360,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+ao
+ao
 ao
 ao
 ao
@@ -12968,7 +13391,7 @@ fy
 fK
 fY
 gf
-cB
+FW
 gx
 gH
 gO
@@ -13079,8 +13502,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+ao
+ao
 ap
 ap
 ap
@@ -13103,10 +13526,10 @@ dq
 dY
 el
 eC
+uU
+PB
 dq
-dq
-dq
-dY
+Lx
 el
 eC
 gg
@@ -13368,7 +13791,7 @@ aa
 ap
 aC
 az
-aK
+rJ
 aM
 aM
 aM
@@ -13792,10 +14215,10 @@ ae
 ae
 aj
 aq
-ar
+tl
 aB
 aM
-aM
+Ne
 bd
 bo
 bv
@@ -13948,20 +14371,20 @@ aC
 cl
 cA
 cN
-de
+CP
 ds
 dB
 dO
 dS
 eq
-eG
+ds
 eN
 eN
 eN
 eN
 eN
 eN
-eG
+hu
 gp
 hc
 hc
@@ -14096,15 +14519,15 @@ dC
 dP
 ec
 es
-eG
+ds
 eN
 eX
 fo
 fC
 fP
 eN
-eG
-gq
+hu
+QL
 gB
 gJ
 gu
@@ -14224,7 +14647,7 @@ aO
 aV
 bg
 aV
-aV
+TO
 bG
 bN
 bT
@@ -14358,7 +14781,7 @@ ae
 ae
 ae
 ai
-al
+Hc
 at
 aw
 aw
@@ -14380,15 +14803,15 @@ dE
 dR
 ee
 eu
-eG
+ds
 eN
 eY
 fq
 fE
 fR
 eN
-eG
-gA
+hu
+JH
 gD
 gL
 go
@@ -14522,14 +14945,14 @@ dF
 iq
 ef
 iM
-eG
+ds
 eN
 eN
 eN
 eN
 eN
 eN
-eG
+hu
 gE
 hg
 hg
@@ -14928,7 +15351,7 @@ ab
 ab
 ab
 ax
-aw
+Pf
 aI
 aS
 aI
@@ -15375,10 +15798,10 @@ dv
 ej
 ez
 eL
+Vn
 dv
 dv
-dv
-ej
+KI
 ez
 eL
 gi
@@ -15516,7 +15939,7 @@ dn
 dW
 dn
 eA
-dn
+EX
 dn
 fd
 dW
