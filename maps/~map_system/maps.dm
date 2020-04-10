@@ -159,14 +159,15 @@ var/list/all_maps = list()
 		empty_levels = list(world.maxz)
 	return pick(empty_levels)
 
-// Get the list of zlevels that a computer on srcz can see maps of (for power/crew monitor, cameras, etc)
-// The long_range parameter expands the coverage.  Default is to return map_levels for long range otherwise just srcz.
-// zLevels outside station_levels will return an empty list.
-/datum/map/proc/get_map_levels(var/srcz, var/long_range = TRUE, var/om_range = 0)
+// Get a list of 'nearby' or 'connected' zlevels.
+// You should at least return a list with the given z if nothing else.
+/datum/map/proc/get_map_levels(var/srcz, var/long_range = FALSE, var/om_range = -1)
 	//Overmap behavior
 	if(use_overmap)
+		//Get what sector we're in
 		var/obj/effect/overmap/visitable/O = get_overmap_sector(srcz)
 		if(!istype(O))
+			//Not in a sector, just the passed zlevel
 			return list(srcz)
 
 		//Just the sector we're in
@@ -176,18 +177,22 @@ var/list/all_maps = list()
 		//Otherwise every sector we're on top of
 		var/list/connections = list()
 		var/turf/T = get_turf(O)
-		for(var/obj/effect/overmap/visitable/V in range(long_range ? om_range : -1, T))
+		var/turfrange = long_range ? max(0, om_range) : om_range
+		for(var/obj/effect/overmap/visitable/V in range(turfrange, T))
 			connections += V.map_z // Adding list to list adds contents
 		return connections
 
 	//Traditional behavior
 	else
-		if (long_range && (srcz in map_levels))
-			return map_levels
+		//If long range, and they're at least in contact levels, return contact levels.
+		if (long_range && (srcz in contact_levels))
+			return contact_levels.Copy()
+		//If in station levels, return station levels
 		else if (srcz in station_levels)
-			return list(srcz)
+			return station_levels.Copy()
+		//Just give them back their zlevel
 		else
-			return list()
+			return list(srcz)
 
 /datum/map/proc/get_zlevel_name(var/index)
 	var/datum/map_z_level/Z = zlevels["[index]"]

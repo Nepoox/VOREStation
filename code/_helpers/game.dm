@@ -246,7 +246,7 @@
 			var/turf/speaker = get_turf(R)
 			if(speaker)
 				for(var/turf/T in hear(R.canhear_range,speaker))
-					speaker_coverage[T] = T
+					speaker_coverage[T] = R
 
 
 	// Try to find all the players who can hear the message
@@ -257,6 +257,7 @@
 			if(ear)
 				// Ghostship is magic: Ghosts can hear radio chatter from anywhere
 				if(speaker_coverage[ear] || (istype(M, /mob/observer/dead) && M.is_preference_enabled(/datum/client_preference/ghost_radio)))
+					var/obj/item/device/radio/R = speaker_coverage[ear]
 					. |= M		// Since we're already looping through mobs, why bother using |= ? This only slows things down.
 	return .
 

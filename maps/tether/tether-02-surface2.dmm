@@ -20827,7 +20827,7 @@
 	},
 /area/tcommsat/chamber)
 "aNd" = (
-/obj/machinery/telecomms/broadcaster/preset_right,
+/obj/machinery/telecomms/broadcaster/preset_right/tether,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
 	nitrogen = 100;

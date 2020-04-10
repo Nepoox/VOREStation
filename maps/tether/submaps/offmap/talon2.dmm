@@ -1978,6 +1978,7 @@
 	dir = 5
 	},
 /obj/structure/table/standard,
+/obj/item/device/bluespaceradio/talon_prelinked,
 /turf/simulated/floor/tiled/steel,
 /area/talon/decktwo/tech)
 "dG" = (
@@ -2982,7 +2983,6 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/item/device/subspaceradio,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/talon/decktwo/lifeboat)
 "fp" = (
@@ -4403,7 +4403,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/bridge_upper)
 "iq" = (
-/obj/machinery/telecomms/allinone/overmap/talon,
+/obj/machinery/telecomms/allinone/overmap/talon{
+	id = "talon_aio";
+	network = "Talon"
+	},
 /turf/simulated/floor/bluegrid,
 /area/talon/decktwo/tech)
 "ir" = (
