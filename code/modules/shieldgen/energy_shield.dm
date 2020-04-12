@@ -1,3 +1,7 @@
+#define SHIELD_VISIBLE 1
+#define SHIELD_BROKEN 2
+#define SHIELD_INVISIBLE 3
+
 //
 // This is the shield effect object for the supercool shield gens.
 //
@@ -5,16 +9,16 @@
 	name = "energy shield"
 	desc = "An impenetrable field of energy, capable of blocking anything as long as it's active."
 	icon = 'icons/obj/machines/shielding.dmi'
-	icon_state = "shield_normal"
+	icon_state = "shield"
 	anchored = 1
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 	density = 1
-	invisibility = 0
 	var/obj/machinery/power/shield_generator/gen = null // Owning generator
 	var/disabled_for = 0
 	var/diffused_for = 0
 	can_atmos_pass = ATMOS_PASS_YES
+	var/adjacent_fields = 0 // It's a bitfield
 
 /obj/effect/shield/update_icon()
 	if(gen && gen.check_flag(MODEFLAG_PHOTONIC) && !disabled_for && !diffused_for)
@@ -104,6 +108,57 @@
 	..(source, damage, emote)
 
 
+/obj/effect/shield/proc/update_connections(var/obj/effect/shield/friend)
+	if(adjacent_fields)
+		return
+
+	var/list/friends = list()
+	for(var/direction in cardinal)
+		var/turf/T = get_step(src, direction)
+		var/obj/effect/shield/S = locate() in T
+		if(S?.gen == gen) //No shield blending!!!
+			adjacent_fields |= direction
+			friends |= S
+
+	if(!friend)
+		
+/*
+	//Wow we're lame
+	if(!adjacent_fields)
+		adjacent_fields = -1
+		icon_state = "shield_corner_base"
+		return
+
+	//Multiple bits means a middle section or corner
+	if((adjacent_fields & (adjacent_fields - 1)) != 0)
+		switch(adjacent_fields)
+			if(NORTH|SOUTH) //Middle vertical section
+				if(x < gen.x) //Left of generator goes north
+					dir = NORTH
+				else
+					dir = SOUTH
+			if(EAST|WEST) //Middle horizontal section
+				if(y < gen.y) //South of generator goes left
+					dir = WEST
+				else
+					dir = EAST
+			else //Corner
+				icon_state = "shield_corner"
+				dir = adjacent_fields
+
+				var/image/start = image(icon, icon_state = "shield_start", dir = )
+				var/image/end = image(icon, icon_state = "shield_end", dir = )
+	else //Oh, ah, single bit set! Help us!
+		dir = friend.dir
+
+		if(friend.dir == get_dir(friend, src)) //They are facing us, we're an end!
+			icon_state = "shield_end"
+		else
+			icon_state = "shield_start"
+*/
+	for(var/obj/effect/shield/S in friends)
+		S.update_connections(src)
+	
 // Fails shield segments in specific range. Range of 1 affects the shielded turf only.
 /obj/effect/shield/proc/fail_adjacent_segments(var/range, var/hitby = null)
 	if(hitby)
@@ -336,3 +391,7 @@
 	visible_message("<span class='danger'>\The [src] breaks into dust!</span>")
 	make_debris()
 	qdel(src)
+
+#undef SHIELD_VISIBLE
+#undef SHIELD_BROKEN
+#undef SHIELD_INVISIBLE

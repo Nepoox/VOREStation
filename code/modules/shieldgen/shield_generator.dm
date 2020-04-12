@@ -124,6 +124,9 @@
 		S.gen = src
 		S.flags_updated()
 		field_segments |= S
+	for(var/obj/effect/shield/S in field_segments)
+		S.update_connections()
+		
 	update_icon()
 
 
