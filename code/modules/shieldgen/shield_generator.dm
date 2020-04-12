@@ -124,9 +124,66 @@
 		S.gen = src
 		S.flags_updated()
 		field_segments |= S
-	for(var/obj/effect/shield/S in field_segments)
-		S.update_connections()
-		
+/*
+	//Hull shield chaos icon generation
+	if(check_flag(MODEFLAG_HULL))
+		var/list/midsections = list()
+		var/list/startends = list()
+		var/list/corners = list()
+		var/list/horror = list()
+
+		var/list/failures = list()
+
+		for(var/obj/effect/shield/SE)
+			var/adjacent_fields = 0
+			for(var/direction in cardinal)
+				var/turf/T = get_step(SE, direction)
+				var/obj/effect/shield/S = locate() in T
+				if(S)
+					adjacent_fields |= direction
+			
+			//What?
+			if(!adjacent_fields)
+				horror += SE
+				testing("Solo shield turf at [SE.x], [SE.y], [SE.z]")
+				continue
+			
+			//Middle section or corner (multiple bits set)
+			if((adjacent_fields & (adjacent_fields - 1)) != 0)
+				//'Impossible' directions
+				if(adjacent_fields == (NORTH|SOUTH) || adjacent_fields == (EAST|WEST))
+					midsections[SE] = adjacent_fields
+				//It's a corner
+				else
+					corners[SE] = adjacent_fields
+			//Not 0, not multiple bits, it's a start or an end
+			else
+				startends[SE] = adjacent_fields
+
+		//Midsections go first
+		for(var/obj/effect/shield/S in midsections)
+			var/easily_done = FALSE
+			for(var/direction in cardinal)
+				var/turf/T = get_step(SE, direction)
+				if(isspace(T))
+					dir = turn(direction, -90)
+					easily_done = TRUE
+					break
+			if(easily_done)
+				midsections -= S
+
+		//Corners
+		for(var/obj/effect/shield/S in corners)
+			dir = corners[S] //Dir is adjacent fields direction
+			var/right = (S.x > x)
+			var/up = (S.y > y)
+			if()
+
+
+
+	//Bubble shield icon generation
+	else
+*/
 	update_icon()
 
 
