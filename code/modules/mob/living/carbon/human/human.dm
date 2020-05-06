@@ -1596,6 +1596,9 @@
 		else
 			layer = HIDING_LAYER
 
+/mob/living/carbon/human/examine_icon()
+	return getFlatIcon(src, defdir = SOUTH, no_anim = TRUE)
+
 /mob/living/carbon/human/proc/get_display_species()
 	//Shows species in tooltip
 	if(src.custom_species) //VOREStation Add

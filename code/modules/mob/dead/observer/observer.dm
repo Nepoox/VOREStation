@@ -152,6 +152,9 @@
 	if(new_stat != DEAD)
 		CRASH("It is best if observers stay dead, thank you.")
 
+/mob/observer/dead/examine_icon()
+	return getFlatIcon(src, defdir = SOUTH, no_anim = TRUE)
+
 /*
 Transfer_mind is there to check if mob is being deleted/not going to have a body.
 Works together with spawning an observer, noted above.

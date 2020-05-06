@@ -629,13 +629,13 @@ proc/ColorTone(rgb, tone)
 
 // Ported from /tg/station
 // Creates a single icon from a given /atom or /image.  Only the first argument is required.
-/proc/getFlatIcon(image/A, defdir, deficon, defstate, defblend, start = TRUE, no_anim = FALSE)
+/proc/getFlatIcon(image/A, defdir, deficon, defstate, defblend, no_anim = FALSE)
 	//Define... defines.
 	var/static/icon/flat_template = icon('icons/effects/effects.dmi', "nothing")
 
 	#define BLANK icon(flat_template)
 	#define SET_SELF(SETVAR) do { \
-		var/icon/SELF_ICON=icon(icon(curicon, curstate, base_icon_dir),"",SOUTH,no_anim?1:null); \
+		var/icon/SELF_ICON=icon(icon(deficon, defstate, defdir),"",SOUTH,no_anim?1:null); \
 		if(A.alpha<255) { \
 			SELF_ICON.Blend(rgb(255,255,255,A.alpha),ICON_MULTIPLY);\
 		} \
@@ -664,56 +664,18 @@ proc/ColorTone(rgb, tone)
 	if(!A || A.alpha <= 0)
 		return BLANK
 
+	if(!defdir)
+		defdir = A.dir
+	if(!deficon)
+		deficon = A.icon
+	if(!defstate)
+		defstate = A.icon_state
+	if(!defblend)
+		defblend = A.blend_mode
+
 	var/noIcon = FALSE
-	if(start)
-		if(!defdir)
-			defdir = A.dir
-		if(!deficon)
-			deficon = A.icon
-		if(!defstate)
-			defstate = A.icon_state
-		if(!defblend)
-			defblend = A.blend_mode
-
-	var/curicon = A.icon || deficon
-	var/curstate = A.icon_state || defstate
-
-	if(!((noIcon = (!curicon))))
-		var/curstates = icon_states(curicon)
-		if(!(curstate in curstates))
-			if("" in curstates)
-				curstate = ""
-			else
-				noIcon = TRUE // Do not render this object.
-
-	var/curdir
-	var/base_icon_dir	//We'll use this to get the icon state to display if not null BUT NOT pass it to overlays as the dir we have
-
-	//These should use the parent's direction (most likely)
-	if(!A.dir || A.dir == SOUTH)
-		curdir = defdir
-	else
-		curdir = A.dir
-
-	//Try to remove/optimize this section ASAP, CPU hog.
-	//Determines if there's directionals.
-	if(!noIcon && curdir != SOUTH)
-		var/exist = FALSE
-		var/static/list/checkdirs = list(NORTH, EAST, WEST)
-		for(var/i in checkdirs)		//Not using GLOB for a reason.
-			if(length(icon_states(icon(curicon, curstate, i))))
-				exist = TRUE
-				break
-		if(!exist)
-			base_icon_dir = SOUTH
-	//
-
-	if(!base_icon_dir)
-		base_icon_dir = curdir
-
-	ASSERT(!BLEND_DEFAULT)		//I might just be stupid but lets make sure this define is 0.
-
-	var/curblend = A.blend_mode || defblend
+	if(!deficon)
+		noIcon = TRUE
 
 	if(A.overlays.len || A.underlays.len)
 		var/icon/flat = BLANK
@@ -722,10 +684,10 @@ proc/ColorTone(rgb, tone)
 		var/image/copy
 		// Add the atom's icon itself, without pixel_x/y offsets.
 		if(!noIcon)
-			copy = image(icon=curicon, icon_state=curstate, layer=A.layer, dir=base_icon_dir)
+			copy = image(icon=deficon, icon_state=defstate, layer=A.layer, dir=defdir)
 			copy.color = A.color
 			copy.alpha = A.alpha
-			copy.blend_mode = curblend
+			copy.blend_mode = defblend
 			layers[copy] = A.layer
 
 		// Loop through the underlays, then overlays, sorting them into the layers list
@@ -765,10 +727,10 @@ proc/ColorTone(rgb, tone)
 				continue
 
 			if(I == copy) // 'I' is an /image based on the object being flattened.
-				curblend = BLEND_OVERLAY
-				add = icon(I.icon, I.icon_state, base_icon_dir)
+				defblend = BLEND_OVERLAY
+				add = icon(I.icon, I.icon_state, defdir)
 			else // 'I' is an appearance object.
-				add = getFlatIcon(image(I), curdir, curicon, curstate, curblend, FALSE, no_anim)
+				add = getFlatIcon(image(I), defdir, deficon, defstate, defblend, no_anim)
 			if(!add)
 				continue
 			// Find the new dimensions of the flat icon to fit the added overlay
@@ -790,7 +752,7 @@ proc/ColorTone(rgb, tone)
 				flat_size = add_size.Copy()
 
 			// Blend the overlay into the flattened icon
-			flat.Blend(add, blendMode2iconMode(curblend), I.pixel_x + 2 - flatX1, I.pixel_y + 2 - flatY1)
+			flat.Blend(add, blendMode2iconMode(defblend), I.pixel_x + 2 - flatX1, I.pixel_y + 2 - flatY1)
 
 		if(A.color)
 			if(islist(A.color))
